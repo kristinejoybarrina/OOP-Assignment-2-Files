@@ -7,6 +7,7 @@ import tkinter as tk
 from tkinter import *
 from pyfiglet import Figlet
 from termcolor import colored
+from colorama import Style, Back
 
 # Initialize the variables
 loop_ctrl_plaintext = 0
@@ -18,7 +19,7 @@ plaintext_char_value = []
 while loop_ctrl_plaintext == 0:
     
 #   Let the user input a message
-    plaintext = str (input ("\033[39m" + "Enter the message: "))
+    plaintext = str (input ( Style.RESET_ALL + "Enter the message: " ))
     plaintext_length = len (plaintext)
 
 #   Display an error message when there's a space in message
@@ -45,7 +46,7 @@ while loop_ctrl_plaintext == 0:
 # Let the user input the key
 while loop_ctrl_key == 0:
     
-    key = str (input ("\033[39m" +"Enter the key: "))
+    key = str (input (Style.RESET_ALL + "Enter the key: "))
     key_length = len (key)
  
  #   Display an error message when there's a space in key   
@@ -108,10 +109,12 @@ root = Tk ()
 root. geometry ("400x250")
 root.title ("Encrypted Code")
 
-# Create widget, label, and button
+# Create a widget, label, and button
 text_window = Text (root, height = 10, width = 50, bg = "black", foreground = "white")
 label_window = Label (root, text = "SHHHH! Keep it as a secret!", foreground = "red", justify = CENTER, font = ("Arial", 14, "bold"))
 button_window = Button (root, text = "CLOSE", command = root.destroy)
+
+# Let the pack method declares the position attributes
 text_window.pack()
 label_window.pack ()
 button_window.pack ()
@@ -120,5 +123,3 @@ button_window.pack ()
 text_window.insert (tk.END, encrypted_code)
 
 tk.mainloop()
-
-
