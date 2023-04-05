@@ -2,25 +2,26 @@
 
 # PSEUDOCODE
 
+# Import modules
+import tkinter as tk
+from tkinter import *
+from pyfiglet import Figlet
+from termcolor import colored
 
 # Initialize the variables
-
 loop_ctrl_plaintext = 0
 loop_ctrl_key = 0
 key_char_value = []
 plaintext_char_value = []
 
 # Use while loop for error input
-
 while loop_ctrl_plaintext == 0:
     
 #   Let the user input a message
-
     plaintext = str (input ("\033[39m" + "Enter the message: "))
     plaintext_length = len (plaintext)
 
 #   Display an error message when there's a space in message
-
     def has_space (plaintext):
         return " " in plaintext
     
@@ -30,7 +31,6 @@ while loop_ctrl_plaintext == 0:
         loop_ctrl_plaintext += 1
  
  #      Display an error message when there's a lowercase in message
-        
         if plaintext.isupper () == True:
             loop_ctrl_plaintext += 1
             
@@ -43,14 +43,12 @@ while loop_ctrl_plaintext == 0:
         loop_ctrl_plaintext = 0
         
 # Let the user input the key
-
 while loop_ctrl_key == 0:
     
     key = str (input ("\033[39m" +"Enter the key: "))
     key_length = len (key)
  
  #   Display an error message when there's a space in key   
- 
     def has_space (key):
         return " " in key
     
@@ -63,7 +61,6 @@ while loop_ctrl_key == 0:
             loop_ctrl_key += 1
 
 #    Display an error message when there's a lowercase in key
-
         else:
             print ("\033[1;31m" + "Input the key in uppercase!\n") 
             loop_ctrl_key = 0
@@ -72,17 +69,14 @@ while loop_ctrl_key == 0:
         loop_ctrl_key = 0
         
 # Convert the character of plaintext to its integer equivalent using ord
-
 for i in range (plaintext_length):
     plaintext_char_value.append (ord (plaintext [i]))
  
 # Convert the character of key to its integer equivalent using ord
-
 for i in range (key_length):
-    key_char_value. append (ord (plaintext [i]))
+    key_char_value. append (ord (key [i]))
 
 # Define a function called "encrypt"
-
 def encrypt (plaintext, key):
     
 #   Create a variable with empty strings
@@ -99,7 +93,32 @@ def encrypt (plaintext, key):
     return ciphertext
 
 # Call the function and display the output
+encrypted_code = (encrypt(plaintext, key))
 
-print (encrypt(plaintext, key))
+# Displaying a notice message that the user got the code
+notice_message = Figlet (font = "standard")
+print (colored (notice_message.renderText("YOU GOT THE CIPHERTEXT"), "yellow"))
+
+# Designing the output through tkinter
+
+# Create an instance tkinter window or frame
+root = Tk ()
+
+# Create the dimension of window
+root. geometry ("400x250")
+root.title ("Encrypted Code")
+
+# Create widget, label, and button
+text_window = Text (root, height = 10, width = 50, bg = "black", foreground = "white")
+label_window = Label (root, text = "SHHHH! Keep it as a secret!", foreground = "red", justify = CENTER, font = ("Arial", 14, "bold"))
+button_window = Button (root, text = "CLOSE", command = root.destroy)
+text_window.pack()
+label_window.pack ()
+button_window.pack ()
+
+# Insert the encrypted code to the window
+text_window.insert (tk.END, encrypted_code)
+
+tk.mainloop()
 
 
