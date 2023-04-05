@@ -24,10 +24,10 @@ output_str = ""
 # Create a for loop with range of user's length input
 for i in range (len(user_input)):
     
-    #Use if-elif-else to check each character written by the user
+#   Use if-elif-else to check each character written by the user
     if user_input [i] == "*":
         
-        # Replace the string punctuation with the equivalent vowels and add each character using +=
+#       Replace the string punctuation with the equivalent vowels and add each character using +=
         output_str += "a"
         
     elif user_input [i] == "&":
@@ -42,7 +42,7 @@ for i in range (len(user_input)):
     elif user_input [i] == "!":
         output_str += "u"
     
-# If the character is not a punction then proceed to else
+#   If the character is not a punction then proceed to else
     else:
         output_str += user_input [i]
 
@@ -54,22 +54,11 @@ win = Tk ()
 
 # Create a title for window
 win.title ("Decrypted Code")
-win.geometry ("1000x500")
+win.geometry ("800x250")
 
 # Style the window
-decrypt_window = Entry (win, justify = "center", width = 50, bg = "yellow", font = ("Arial", 18, "bold"))
+decrypt_window = Entry (win, justify = "center", width = 50, bg = "yellow", font = ("Arial", 15, "bold"))
 decrypt_window.insert (0, decrypt_code)
 decrypt_window.pack (padx = 100, pady = 100)
 
 win.mainloop ()
-
-
-
-
-
-
-
-
-
-
-
