@@ -1,4 +1,5 @@
 # Kristine Joy Barrina # BSCPE 1-5 # April 5, 2023
+# Creating a program that encrypts a plaintext and key
 
 # PSEUDOCODE
 
@@ -101,7 +102,6 @@ notice_message = Figlet (font = "standard")
 print (colored (notice_message.renderText("YOU GOT THE CIPHERTEXT"), "yellow"))
 
 # Designing the output through tkinter
-
 # Create an instance tkinter window or frame
 root = Tk ()
 
